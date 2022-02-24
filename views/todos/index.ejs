@@ -1,0 +1,32 @@
+<% layout('layouts/boilerplate'); %>
+<%- include('./new') %>
+<% for(let todo of todos) { %>
+  <div class="row">
+    <div class="col-md-4 offset-md-3">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= todo.name %>
+          </h5>
+          <p class="card-text">
+            <% if(todo.complete) { %>
+              Completed
+            <% } else { %>
+              Not Completed
+            <% } %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2 d-flex flex-column" style="padding: 0 5%;">
+      <% if(!todo.complete) { %>
+        <form action="/todos/<%= todo.id %>/complete?_method=PUT" method="POST">
+          <button type="submit" class="btn btn-sm btn-info" style="margin: 2% 0;">Done?</button>
+        </form>
+      <% } else { %>
+        <button type="submit" class="btn btn-sm btn-secondary" style="margin: 2% 0;" disabled>Done</button>
+      <% } %>
+      <button type="button" class="btn btn-sm btn-danger" style="margin: 2% 0;">Delete</button>
+    </div>
+  </div>
+<% } %>

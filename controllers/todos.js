@@ -7,7 +7,8 @@ const getTodos = (req, res) => {
       return res.status(500).send('Oops! Someting went wrong.');
     }
     const todos = JSON.parse(data);
-    return res.json({todos: todos});
+    /* return res.json({todos: todos}); */
+    return res.render('./todos/index', {todos});
   })
 }
 
