@@ -87,9 +87,29 @@ const completeTodo = (req, res) => {
   })
 }
 
+const deleteTodo = (req, res) => {
+  const {id} = req.params;
+
+  const deleteTodoById = (todos, id) => {
+    return todos.filter(todo => todo.id !== parseInt(id));
+  }
+
+  fs.readFile('./store/todos.json', 'utf-8', (err, data) => {
+    if(err) {
+      return res.status(500).send('Oops! Someting went wrong.');
+    }
+    let todos = JSON.parse(data);
+
+    fs.writeFile('./store/todos.json', JSON.stringify(deleteTodoById(todos, id)), () => {
+      return res.redirect('/todos');
+    })
+  })
+}
+
 module.exports = {
   getTodos,
   addTodo,
   getIncompleteTodos,
-  completeTodo
+  completeTodo,
+  deleteTodo
 }

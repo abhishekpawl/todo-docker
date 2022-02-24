@@ -11,4 +11,6 @@ router.get('/incomplete', todosController.getIncompleteTodos)
 
 router.put('/:id/complete', todosController.completeTodo)
 
+router.delete('/:id/delete', todosController.deleteTodo)
+
 module.exports = router;
