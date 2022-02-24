@@ -21,7 +21,7 @@
     <div class="col-md-2 d-flex flex-column" style="padding: 0 5%;">
       <% if(!todo.complete) { %>
         <form action="/todos/<%= todo.id %>/complete?_method=PUT" method="POST">
-          <button type="submit" class="btn btn-sm btn-info" style="margin: 2% 0;">Done?</button>
+          <button type="submit" class="btn btn-sm btn-primary" style="margin: 2% 0;">Done?</button>
         </form>
       <% } else { %>
         <button type="submit" class="btn btn-sm btn-secondary" style="margin: 2% 0;" disabled>Done</button>
